@@ -1,74 +1,200 @@
+@import url('https://fonts.cdnfonts.com/css/pokemon-solid');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 body {
-  display: flex;
-  flex-direction: column;
-  background-color: rgb(108, 85, 85);
   color: rgb(58, 36, 36);
   font-family: Arial, Helvetica, sans-serif;
 }
-.card {
+main {
+  margin: 0 5%;
+  padding: 5%;
+  height: 100vh;
+  background: linear-gradient(rgba(66, 66, 66, 0.281), rgba(255, 255, 255, 0.226)), url(https://external-preview.redd.it/NXrR_qnMRHrwUoE8pbeiX26fq4mNctFsmdEghRVApSQ.jpg?auto=webp&s=b18e1b0df84f417036d4e1ac0affb6245a071ebf) no-repeat center  ;
+  
+}
+
+.head {
+  margin: 0 5%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 50%;
+  grid-template-rows: 1fr;
+  gap: 0px 5px ;
+  grid-auto-flow: row;
+  grid-template-areas: "title title search";
   line-height: 70px;
   text-align: center;
-  color: rgba(255, 255, 255, 0.702);
   border-bottom: 2px solid rgba(240, 248, 255, 0.637);
-  letter-spacing: 1.2rem;
+  letter-spacing: 1rem;
 }
-#container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap:wrap;
-  margin: 0 10%;
-  padding: 2rem 5rem;
+header > h1 {
+  grid-area: title;
+  margin-top: 2rem;
+  color: #B43B18;
+  font-size: 3rem;
+  font-family: 'Pokemon Solid', sans-serif;;
 }
+.search {
+  margin-top: 2rem;
+  text-align: right;
+  grid-area: search;
+}
+
 input {
   line-height: 2.5rem;
   width: 20rem;
   padding: 0 7px;
   font-size: 1.5rem;
-  border: none;
+  border-color: rgba(0, 0, 0, 0.137);
   border-radius: 5px;
 }
+
 #btn {
   font-size: 1.5rem;
   width: 10rem;
   line-height: 2.8rem;
   border: none;
-  background-color: rgb(58, 36, 36);
+  background-color:#B43B18;
   color: aliceblue;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 7px;
+}
+#btn:hover {
+  background-color:#bd5c41
+}
+.card {
+  background-color: rgba(240, 248, 255, 0.822);
+  border-radius: 15px;
+  width: 55vw;
+}
+#box {
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  gap: 9px;
+  grid-template-rows: 5rem 1fr;
+  grid-template-areas:
+  'name name img'
+  'list-1 list-2 img';
+  margin: 0 5%;
+  padding: 2rem 0;
+  justify-content: center;
+
 }
 #pokemon_name {
+  grid-area: name;
   margin: 1rem 10%;
-  font-size: 2.5rem;
-  color: rgba(255, 255, 255, 0.702);
+  font-size: 3rem;
+  color: #45719B;
   word-spacing: 1.5rem;
+  text-align: center;
 }
-.search {
-  margin: 2rem 10%;
-  text-align: right;
-}
+
 .photo {
-  width: max-content;
+  height: max-content;
+ text-align: center;
 }
 .characteristic {
   width: max-content;
   padding: 1rem 5rem;
-  margin:7% 2%;
+  margin: 7% 0;
+  grid-area: list-1; 
+}
+.characteristic2 {
+  width: max-content;
+  padding: 1rem 5rem;
+  margin: 7% 0;
+  grid-area: list-2; 
 }
 ul {
-    list-style-type: circle;
-    margin-top: 1rem;
-    font-size: 1.5rem;
+  list-style-type:none;
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  color: #45719be1;
 }
 h3 {
-    font-size: 2rem;
-    border-bottom: 2px solid black;
+  color: #45719B;
+  font-size: 2rem;
+  border-bottom: 2px solid #45719B;
 }
 img {
-    margin-top: 10%;
+  margin-top: 4%;
+  grid-area: img; 
+  width: 200px;
+}
+
+@media screen and (max-width: 1500px) {
+  #pokemon_name {
+    align-self: center;
+  }
+  .card {
+    width: 70vw;  
+  }
+
+  #box {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 5px ;
+    grid-template-areas:
+    'name img'
+    'list-1 list-2';
+    }
+}
+
+
+@media screen and (max-width: 1050px) {
+  .card {
+    width: 80vw;  
+  }
+
+  #box {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 5px ;
+    grid-template-areas:
+    'name name'
+    'img img'
+    'list-1 list-2';
+    }
+}
+
+@media screen and (max-width: 700px){
+  /* For mobile phones: */
+
+  .head {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: 
+    "title"
+    "search";
+  }
+  .title {
+    background-color: #b43a18e5;
+    color: rgb(255, 255, 255);
+    padding: 3%;
+    margin-top: 2%;
+    font-size: 2rem;
+  }
+  .search {
+    padding: 0 5%;
+  }
+  main {
+    height: 100%;
+  }
+  .card {
+    width: 80vw;  
+  }
+  #box {
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  gap: 5px ;
+  grid-template-areas:
+  'name'
+  'img'
+  'list-1'
+  'list-2';
+  }
+
 }

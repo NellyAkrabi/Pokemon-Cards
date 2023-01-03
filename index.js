@@ -7,10 +7,13 @@ const ulStats = document.getElementById("pokemon_stats");
 const ulAbilties = document.getElementById("pokemon_abilties");
 const h1 = document.getElementById("pokemon_name");
 
+
 button.onclick = () => {
     if(input.value.trim().length === 0){
-       return alert("Write the name of the Pokemon");        
+       return alert("Write the name of the Pokemon");     
+       // do createElement DIV!!!!   
     }
+    container.classList.add("card");
     
     async function findPokemon() {
     const data = await fetch(
@@ -20,16 +23,16 @@ button.onclick = () => {
 
     // Name of Pokemon
     const pokemonName = result.species.name;
-    h1.innerText = `Name: ${
+    h1.innerText = ` ${
       pokemonName.charAt(0).toUpperCase() + pokemonName.slice(1)
     }`;
-    container.style = "background-color: aliceblue;"
+ 
     // Stats
     const stats = result.stats;
     stats.map((e) => {
       const liElem = document.createElement("li");
       liElem.innerText = `${e.stat.name}`;
-      h3[0].innerText = "Stats";
+      h3[0].innerText = "Stats:";
       ulStats.append(liElem);
     });
 
@@ -38,7 +41,7 @@ button.onclick = () => {
     abilities.map((e) => {
       const liElem = document.createElement("li");
       liElem.innerText = `${e.ability.name}`;
-      h3[1].innerText = "Abilities";
+      h3[1].innerText = "Abilities:";
       ulAbilties.append(liElem);
     });
 
